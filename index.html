@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/screen.css">
+    <title>TheMovieApp</title>
+</head>
+<body>
+    <nav class="c-nav">
+     <ul class="c-nav__list">
+        <li class="c-logo">
+            <a href="index.html">
+                <picture>
+                    <source
+                        srcset="./svg/logo-light.svg"
+                        media="(prefers-color-scheme: light)"
+                    >
+                    <img src="./svg/logo.svg">
+                </picture>
+               
+            </a>
+          
+        </li>
+        <li class="search__container">
+           <form id="form">
+            <input type="text" class="c-search" id="search" placeholder="Search for a movie">
+            <svg id="searchicon"xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24">
+                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                <path d="M0 0h24v24H0z" fill="none"/>
+            </svg> 
+           </form>
+        </li>
+     </ul>
+    </nav>
+    <main id="main" class="c-movie-container">
+            <!-- <div class="c-movie" id="open-modal">
+                    <img  class="c-movie__poster"src="./image/3zXceNTtyj5FLjwQXuPvLYK5YYL.jpg" alt="Avengers">
+                <span class="c-movie__title">
+                    black adam
+                </span>
+                <span class="c-movie__rating high">
+                   8
+                </span>
+            </div>
+            <div class="c-movie">
+                    <img  class="c-movie__poster"src="./image/poster-placeholder.png" alt="Avengers">
+                <span class="c-movie__title">
+                    movie not found
+                </span>
+                <span class="c-movie__rating high">
+                   8
+                </span>
+            </div>
+            <div class="c-movie">
+                    <img  class="c-movie__poster"src="./image/topgun.jpg" alt="Avengers">
+                <span class="c-movie__title">
+                    top gun: maverick
+                </span>
+                <span class="c-movie__rating medium">
+                   8
+                </span>
+            </div>
+            <div class="c-movie">
+                    <img  class="c-movie__poster"src="./image/topgun.jpg" alt="Avengers">
+                <span class="c-movie__title">
+                    top gun: maverick
+                </span>
+                <span class="c-movie__rating low">
+                   8
+                </span>
+            </div>
+            <div class="c-movie">
+                    <img  class="c-movie__poster"src="./image/topgun.jpg" alt="Avengers">
+                <span class="c-movie__title">
+                    top gun: maverick
+                </span>
+                <span class="c-movie__rating high">
+                   8
+                </span>
+            </div> -->
+    </main>
+    
+    <div id="open-modal" class="c-modal js-modal">
+
+        <!-- Modal content -->
+        <div class="c-modal-wrapper">
+            <span class="c-modal__close">&times;</span>
+            <img src="https://image.tmdb.org/t/p/w1280/bQXAqRx2Fgc46uCVWgoPz5L5Dtr.jpg" alt="">
+            <div class="modal-info">
+              <h2 class="c-modal__title">
+                  black adam  <span class="c-modal__year u-muted">(2022)</span>
+                  </h2>
+                  <h2 class="c-modal__tagline">
+                      the world needed a hero. it got black adam
+                  </h2>
+                  <div class="c-modal__category--movie">
+                      2h 50m  <span class="u-muted">Action, Adventure, Family • </span><span class="u-muted">19/10/2022</span>
+                  </div>
+                <h3 class="u-text-uppercase u-fs-medium"style="margin-top:15px">story</h3>
+                <p class="c-modal__plot">
+                    Nearly 5,000 years after he was bestowed with the almighty powers of the 
+                    Egyptian gods—and imprisoned just as quickly—Black Adam is freed from his earthly tomb, 
+                    ready to unleash his unique form of justice on the modern world.  
+                </p>
+          </div>
+        </div>
+     
+	
+    </div>
+    <script src="./script/test.js"></script>
+</body>
+</html>
+
