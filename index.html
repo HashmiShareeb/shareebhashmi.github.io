@@ -11,13 +11,13 @@
     <nav class="c-nav">
       <ul class="c-nav__list">
         <li class="c-logo">
-          <a href="index.html">
+          <a href="index.html" aria-label="Link that goes back to site or refreshes the page back to home">
             <picture>
               <source
                 srcset="./svg/logo-light.svg"
                 media="(prefers-color-scheme: light)"
               />
-              <img src="./svg/logo.svg" />
+              <img src="./svg/logo.svg" alt="logo" />
             </picture>
           </a>
         </li>
@@ -27,13 +27,14 @@
               type="text"
               class="c-search"
               id="search"
-              placeholder="Search for a movie"
+              placeholder="Search movie"
             />
             <svg
               id="searchicon"
               xmlns="http://www.w3.org/2000/svg"
               width="28"
               height="28"
+              class="c-search__icon"
               viewBox="0 0 24 24"
             >
               <path
@@ -104,7 +105,8 @@
     <div class="c-modal__overlay js-modal">
       <div class="c-modal-wrapper">
         <span class="c-modal__close js-close">&times;</span>
-        <img class="c-modal__poster"
+        <img
+          class="c-modal__poster"
           src="https://image.tmdb.org/t/p/w1280/bQXAqRx2Fgc46uCVWgoPz5L5Dtr.jpg"
           alt=""
         />
@@ -112,9 +114,9 @@
           <h2 class="c-modal__title">
             black adam <span class="c-modal__year u-muted">(2022)</span>
           </h2>
-          <h2 class="c-modal__tagline">
+          <!-- <h2 class="c-modal__tagline">
             the world needed a hero. it got black adam
-          </h2>
+          </h2> -->
           <div class="c-modal__category--movie">
             2h 50m <span class="u-muted">Action, Adventure, Family • </span
             ><span class="u-muted">19/10/2022</span>
@@ -128,12 +130,37 @@
             from his earthly tomb, ready to unleash his unique form of justice
             on the modern world.
           </p>
-          <h3 class="u-text-uppercase u-fs-medium c-modal__rating" style="margin-top: 15px">
-            Rating: 8.0
+          <h3
+            class="u-text-uppercase  u-fs-medium c-modal__rating"
+            style="margin-top: 15px"
+          >
+            <div>Rating: 8.0</div>
           </h3>
+          <div>
+            <svg
+              class="c-rating-circle"
+              width="200px"
+              height="200px"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle
+                class="c-rating-circle__bg"
+                cx="80"
+                cy="80"
+                r="74"
+              ></circle>
+              <circle
+                class="c-rating-circle__front"
+                cx="80"
+                cy="80"
+                r="74"
+              ></circle>
+            </svg>
+          </div>
         </div>
       </div>
     </div>
     <script src="./script/app.js"></script>
   </body>
 </html>
+<!-- 464=10 / 46,4 = 1 rating x 46,4 -->

@@ -24,9 +24,13 @@ const modalEl = document.querySelector(".js-modal");
 const modalCloseBtn = document.querySelector(".js-close");
 const modalTitle = document.querySelector(".c-modal__title");
 const modalImg = document.querySelector(".c-movie__poster");
+const modelWrapper = document.querySelector(".c-modal-wrapper");
 const modalOverview = document.querySelector(".c-modal__plot");
 const ModalBackdrop = document.querySelector(".c-modal__poster");
 const modelRating = document.querySelector(".c-modal__rating");
+const modelContent = document.querySelector(".c-modal-content");
+
+//const ModelRating = document.querySelector(".c-rating-circle__front").style.transform = `rotate(${(vote_average / 10) * 360}deg)`;
 
 let currentPage = 1;
 let nextPage = 2;
@@ -97,7 +101,10 @@ const showMovies = (movies) => {
 };
 
 const ShowModel = (e) =>{
+ 
+
   const modalOverview = document.querySelector(".c-modal__plot");
+  
   let id = e.target.getAttribute('data-movie-id');
   const detailAPI =`https://api.themoviedb.org/3/movie/${id}?api_key=6bfaa39b0a3a25275c765dcaddc7dae7&language=en-US`;
   console.log("movietrigger");
@@ -111,8 +118,16 @@ const ShowModel = (e) =>{
     let overview = movie.querySelector(".c-modal__overview").innerText;
     let rating = movie.querySelector(".c-movie__rating").innerText;
     let backdrop = movie.querySelector(".c-movie__backdrop").src;
-
-
+    const ratings = document.querySelector(".c-movie__rating");
+    const ModelRating = document.querySelector(".c-rating-circle__front").style=`stroke-dasharray: ${(464 / 10) * rating};`;
+    console.log(ModelRating);
+    if(rating >= 8){
+      ratings.fillStyle = "green";
+    }else if(rating >= 5){
+      ratings.fillStyle = "orange";
+    }else{
+      ratings.fillStyle = "red";
+    }
     
 
     console.log(id);
@@ -122,6 +137,7 @@ const ShowModel = (e) =>{
     modalOverview.innerHTML = overview;
     modelRating.innerHTML = rating;
     ModalBackdrop.src = backdrop;
+    ModelRating.innerHTML = rating;
 
     //modalOverview.innerHTML= e.target.parentElement.children[2].innerHTML;
     // let img = e.target.parentElement.children[2].innerHTML;
@@ -129,11 +145,17 @@ const ShowModel = (e) =>{
     // console.log(e.target.parentElement.children[0].innerHTML);
 
     modalEl.classList.add("open-modal");
-
+    document.body.style.overflow = 'hidden';
+   
   }
 
-  modalCloseBtn.addEventListener("click", (e) => {
+ 
+
+  modalCloseBtn.addEventListener("click", () => {
     modalEl.classList.remove("open-modal");
+    document.body.style.overflow = 'visible';
+    
+    
   });
   submitMovie(movie);
 }
@@ -142,7 +164,7 @@ const ShowModel = (e) =>{
 
 // FOR RATE
 const ChangeColorByRating = (vote) => {
-  if (vote >= 8) {
+  if (vote >= 7.5) {
     return "c-movie__rating--high";
   } else if (vote >= 5) {
     return "c-movie__rating--medium";

@@ -97,7 +97,7 @@ html::-webkit-scrollbar-track {
     }
 
     .c-search{
-        color: var(--txt-dark);
+        color: var(--txt-light);
         background-color:var(--color-card);
         box-shadow: 0 0 0px rgba(0,0,0,0.2);
         
@@ -135,8 +135,9 @@ html::-webkit-scrollbar-track {
     height: 5rem;
     width: 100%;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    position: sticky;
     z-index: 1;
+    position: fixed;
+    top: 0;
     
     
   
@@ -181,11 +182,11 @@ input, select, textarea{
     /* color: var(--txt-light); */
     
 }
-.c-search:focus+svg{
+.c-search:focus + .c-search__icon{
     fill: var(--accent-color);
     
 }
-.c-search__icon,svg{
+.c-search__icon, .c-search__icon{
     fill: var(--txt-light);
     font-size: 1.5rem;
     cursor: pointer;
@@ -219,7 +220,7 @@ input, select, textarea{
     border-radius: 0.625rem;
     cursor: pointer;
     transition: 0.3s;
-    /* color: var(--accent-color); */
+    color: var(--accent-color);
 }
 
 .c-movie__poster{
@@ -241,10 +242,13 @@ input, select, textarea{
     --movie-rating-medium-front: #eb7521;
     /* --movie-rating-medium-front: #e6bd1b; */
     --movie-rating-high-front: #5BC492;
-    --movie-rating-low-back: #fa9696;
-    --movie-rating-medium-back: #f3ceb3;
+    /* --movie-rating-low-back: #fa9696; */
+    --movie-rating-low-back: var(--color-card);
+    /* --movie-rating-medium-back: #f3ceb3; */
+    --movie-rating-medium-back: var(--color-card);
     /* --movie-rating-medium-back: #fff4c7; */
-    --movie-rating-high-back: #99f9ca;
+    /* --movie-rating-high-back: #99f9ca; */
+    --movie-rating-high-back: var(--color-card);
     position: absolute;
     top: 1.375rem;
     left: 1.5rem;
@@ -288,15 +292,19 @@ input, select, textarea{
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
     visibility: hidden;
     z-index: -10;
+    /* transform: scale(0); */
     overflow: hidden;
+    
 }
 
 .open-modal {
     visibility: visible;
     z-index: 10;
-    width: 100vw;
-    height: 100vh;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
     display: grid;
+    transform: scale(1);
+    transition: opacity 250ms 300ms ease, transform 350ms 100ms ease;
     
 }
 
@@ -310,10 +318,11 @@ input, select, textarea{
     border-radius: 1.5625rem;
     border: 1px solid #888;
     width: 80%;
+    transform: scale(0);
 }
 /* The Close Button */
 .c-modal__close {
-    color: var(--txt-light);
+    color: #FFFFFF;
     float: right;
     font-size: 1.75rem;
     font-weight: bold;
@@ -367,6 +376,9 @@ input, select, textarea{
 
     /* width: 75%; */
 }
+.c-modal__poster{
+   filter: brightness(0.9);
+}
 .c-modal__tagline{
     font-size: 1.125rem;
     font-weight: 600;
@@ -408,18 +420,43 @@ input, select, textarea{
     border-radius: 0.625rem 0.625rem 0rem 0rem;
     width: 100%;
     height: auto;
+    
 }
 
 
 .modal-info{
     padding: 1.25rem 1.875rem 0 1.875rem;
+    overflow: auto;
+    height: 300px;
 }
 .modal-btn:checked ~ .modal .modal-wrap{
     opacity: 1;
     transform: scale(1);
     transition: opacity 250ms 500ms ease, transform 350ms 500ms ease;
 }
-  
+
+.c-rating-circle {
+    fill: transparent;
+    position: relative;
+    margin-top: 50px;
+}
+.c-rating-circle__bg{
+    stroke: var(--color-front);
+    stroke-width: 8;
+}
+.c-rating-circle__front{
+    stroke: gold;
+    stroke-width: 8;
+    stroke-dasharray: 464;
+}
+
+.c-rating-circle__text{
+    position: absolute;
+    left: 98px;
+    bottom: 136px;
+    width: 100%;
+    z-index: 10;
+}
   
 @media screen and (max-width: 500px) {
     .modal-wrap {
@@ -486,6 +523,9 @@ input, select, textarea{
         align-items: center;
       
     }
+    .c-modal__wrapper{
+        max-width: 400px;
+    }
     
 }
 /* tablet */
@@ -498,9 +538,15 @@ input, select, textarea{
         margin: 0;
         width: 17.5rem;
     }
-    .c-movie__poster{
+    /* .c-movie__poster{
         width: 100%;
         height: 100%;
+    } */
+
+    .c-modal-wrapper{
+        max-width:auto;
+       
     }
+    
     
 }
