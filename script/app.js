@@ -60,7 +60,10 @@ const showMovies = (movies) => {
     // if (IMG_PATH == null) {
     //   IMG_PATH = `poser-placeholder.png`;
     // }
-    const { title, poster_path, vote_average, overview, id, backdrop_path } = movie;
+    let date = new Date(`${movie.release_date}`);
+    let dateFormat = date.getDate() + "-" + (date.getMonth()+1) + "-" + date.getFullYear();
+    let dateFormatYear =date.getFullYear();
+    const { title, poster_path, vote_average, overview, id, backdrop_path, release_date } = movie;
     const movieItem = document.createElement("main");
     movieItem.classList.add("c-movie-container");
     movieItem.innerHTML = `
@@ -70,13 +73,14 @@ const showMovies = (movies) => {
     <h3 class="c-movie__title">
         ${title}
     </h3>
+    <h5 class="c-movie__release-date">(${dateFormatYear})</h5>
     <p class="c-modal__overview u-hide">${overview}</p>
     <span class="c-movie__rating ${ChangeColorByRating(
       vote_average
     )}">${vote_average} </span>
     </span>
     <button class="c-movie__btn">
-      Read More
+    Read More
     </button>
     </div>
     

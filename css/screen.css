@@ -38,6 +38,7 @@ html{
 
 a{
     text-decoration: none;
+    color: var(--txt-light);
 }
 
 *,
@@ -199,25 +200,28 @@ input, select, textarea{
 
 /* Components Movie */
 .c-movie-container{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr));
     margin-top: 3.125rem;
     position: relative;
+   
     
 }
 .c-movie{
     padding: 1.25rem;
+    margin: 0 auto;
     transition: all .3s ease-in-out;
     width: 17.5rem;
     position: relative;
     border-radius: 0.625rem;
     text-align: center;
     letter-spacing: 0.0313rem;
+    align-items: center;
 }
 .c-movie:hover{
-    transform: scale(1.05);
+    transform: scale(1);
     border-radius: 0.625rem;
     cursor: pointer;
     transition: 0.3s;
@@ -237,6 +241,35 @@ input, select, textarea{
     margin-top: 1.25rem;
     text-align: center;
     
+}
+.c-movie__release-date{
+    font-size: 0.875rem;
+    font-weight: 400;
+    text-transform: capitalize;
+    margin-top: 0.625rem;
+    text-align: center;
+}
+.c-movie__btn{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    margin-top: 1.25rem;
+    padding: 0.625rem 1.02rem;
+    border-radius: 0.625rem;
+    background-color: var(--accent-color);
+    color: var(--color-front);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    text-decoration: none;
+    display: grid;
+    place-content: center;
+    transition: all 0.3s ease-in-out;
+}
+.c-movie__btn:hover{
+    background-color: var(--color-front);
+    color: var(--accent-color);
+    border: 1px var(--accent-color,--color-front) solid;
 }
 .c-movie__rating{
     --movie-rating-low-front: #ff0000;
@@ -499,6 +532,22 @@ input, select, textarea{
 .c-pagination__next{
     cursor: pointer;
 }
+
+.c-footer{
+    --footer-background: var(--color-front);
+    --footer-txt-clr: var(--txt-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4.5625rem;
+    background-color: var(--footer-background);
+    color: var(--footer-txt-clr);
+    font-size: 0.75rem;
+    font-weight: 300;
+}
+
+
+
 /* Utilities */
 
 .u-muted{
@@ -522,13 +571,18 @@ input, select, textarea{
 .u-show{
     display: block;
 }
+.u-db{
+    display: block;
+}
 /* Media queries  */
 
 /* smartphone */
 @media (max-width:576px) {
     .c-movie-container{
-        flex-direction: column;
-        align-items: center;
+        /* flex-direction: column;
+        align-items: center; */
+        padding: 0.625rem;
+        margin: 0;
       
     }
     .c-modal__wrapper{
@@ -538,13 +592,28 @@ input, select, textarea{
 }
 /* tablet */
 @media (max-width:786px) {
+    .c-movie-container{
+        /* flex-direction: column;
+        align-items: center; */
+        margin-top: 3.2rem;
+      
+    }
     .c-movie{
         /* flex-direction: column;
         align-items: center;
        */
         padding: 0.625rem;
-        margin: 0;
+        margin: 0 auto;
         width: 17.5rem;
+        
+    }
+    .c-movie__title, .c-movie__release-date{
+        font-size: 1rem;
+        text-align: center;
+        
+    }
+    .c-movie__btn{
+        display: none;
     }
     /* .c-movie__poster{
         width: 100%;
