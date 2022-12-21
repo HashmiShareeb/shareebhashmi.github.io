@@ -202,7 +202,8 @@ input, select, textarea{
 .c-movie-container{
     display: grid;
     align-items: center;
-    justify-items: center;
+    justify-content: center;
+    grid-gap: 1.25rem;
     grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr));
     margin-top: 3.125rem;
     position: relative;
@@ -210,8 +211,8 @@ input, select, textarea{
     
 }
 .c-movie{
-    padding: 1.25rem;
     margin: 0 auto;
+    padding: 1.25rem;
     transition: all .3s ease-in-out;
     width: 17.5rem;
     position: relative;
@@ -221,7 +222,6 @@ input, select, textarea{
     align-items: center;
 }
 .c-movie:hover{
-    transform: scale(1);
     border-radius: 0.625rem;
     cursor: pointer;
     transition: 0.3s;
@@ -250,26 +250,44 @@ input, select, textarea{
     text-align: center;
 }
 .c-movie__btn{
-    display: grid;
-    align-items: center;
-    justify-items: center;
+    margin: 0 auto;
     margin-top: 1.25rem;
-    padding: 0.625rem 1.02rem;
+    padding: 0.625rem;
     border-radius: 0.625rem;
-    background-color: var(--accent-color);
-    color: var(--color-front);
+    outline: none;
+    background-color: var(--color-card);
+    color: var(--txt-light);
+    border: 1px solid transparent;
     font-size: 0.875rem;
     font-weight: 500;
     text-transform: capitalize;
     text-decoration: none;
-    display: grid;
-    place-content: center;
     transition: all 0.3s ease-in-out;
+}
+.c-movie__btn:focus{
+    outline: none;
+    background-color: var(--color-front);
+    color: var(--accent-color);
+    border: 1px var(--accent-color,--color-front) solid;
 }
 .c-movie__btn:hover{
     background-color: var(--color-front);
     color: var(--accent-color);
     border: 1px var(--accent-color,--color-front) solid;
+    cursor: pointer;
+}
+
+@media(prefers-color-scheme: dark){
+    .c-movie__btn{
+        background-color: var(--color-front);
+        color: var(--accent-color);
+    }
+    .c-movie__btn:hover{
+        background-color: var(--accent-color);
+        color: var(--color-front);
+        border: 1px var(--accent-color,--color-front) solid;
+        cursor: pointer;
+    }
 }
 .c-movie__rating{
     --movie-rating-low-front: #ff0000;
@@ -277,12 +295,12 @@ input, select, textarea{
     /* --movie-rating-medium-front: #e6bd1b; */
     --movie-rating-high-front: #5BC492;
     /* --movie-rating-low-back: #fa9696; */
-    --movie-rating-low-back: var(--color-card);
+    --movie-rating-low-back: #000;
     /* --movie-rating-medium-back: #f3ceb3; */
-    --movie-rating-medium-back: var(--color-card);
+    --movie-rating-medium-back: #000;
     /* --movie-rating-medium-back: #fff4c7; */
     /* --movie-rating-high-back: #99f9ca; */
-    --movie-rating-high-back: var(--color-card);
+    --movie-rating-high-back: #000;
     position: absolute;
     top: 1.375rem;
     left: 1.5rem;
@@ -290,7 +308,7 @@ input, select, textarea{
     border-radius: 3.125rem;
     font-size: 0.8rem;
     color: var(--txt-light);
-    font-weight: 500;
+    font-weight: 700;
     letter-spacing: 0.5px;
     text-align: center;
     width: 2.5rem;
@@ -328,6 +346,7 @@ input, select, textarea{
     z-index: -10;
     /* transform: scale(0); */
     overflow: hidden;
+    
     
 }
 
@@ -588,7 +607,18 @@ input, select, textarea{
     .c-modal__wrapper{
         max-width: 400px;
     }
-    
+    .c-logo-bg{
+        display: none;
+    }
+    .c-logo-favicon{
+        display: block;
+        min-width: 2rem;
+        height: 2rem;
+
+    }
+    .c-search{
+        max-width: 15.625rem;
+    }
 }
 /* tablet */
 @media (max-width:786px) {

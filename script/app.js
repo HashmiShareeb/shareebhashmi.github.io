@@ -29,6 +29,7 @@ const modalOverview = document.querySelector(".c-modal__plot");
 const ModalBackdrop = document.querySelector(".c-modal__poster");
 const modelRating = document.querySelector(".c-modal__rating");
 const modelContent = document.querySelector(".c-modal-content");
+const modalRelease = document.querySelector(".c-modal__release-date");
 
 //const ModelRating = document.querySelector(".c-rating-circle__front").style.transform = `rotate(${(vote_average / 10) * 360}deg)`;
 
@@ -67,13 +68,13 @@ const showMovies = (movies) => {
     const movieItem = document.createElement("main");
     movieItem.classList.add("c-movie-container");
     movieItem.innerHTML = `
-    <div class="c-movie" id="showmodal" data-movie-id="${id}">
+    <div class="c-movie u-db" id="showmodal" data-movie-id="${id}">
     <img  class="c-movie__poster" src="${IMG_PATH+poster_path}" alt="${title}">
     <img  class="c-movie__backdrop u-hide" src="${IMG_PATH+backdrop_path}" alt="${title}">
     <h3 class="c-movie__title">
         ${title}
     </h3>
-    <h5 class="c-movie__release-date">(${dateFormatYear})</h5>
+    <h2 class="c-movie__release-date">(${dateFormatYear})</h2>
     <p class="c-modal__overview u-hide">${overview}</p>
     <span class="c-movie__rating ${ChangeColorByRating(
       vote_average
@@ -83,7 +84,6 @@ const showMovies = (movies) => {
     Read More
     </button>
     </div>
-    
     `;
     movieEl.append(movieItem);
 
@@ -121,27 +121,33 @@ const ShowModel = (e) =>{
     let title = movie.querySelector(".c-movie__title").innerText;
     let overview = movie.querySelector(".c-modal__overview").innerText;
     let rating = movie.querySelector(".c-movie__rating").innerText;
-    let backdrop = movie.querySelector(".c-movie__backdrop").src;
+    let backdrop = movie.querySelector(".c-movie__backdrop") ? movie.querySelector(".c-movie__backdrop").src : "poster-placeholder.png";
     const ratings = document.querySelector(".c-movie__rating");
-    const ModelRating = document.querySelector(".c-rating-circle__front").style=`stroke-dasharray: ${(464 / 10) * rating};`;
-    console.log(ModelRating);
+    
+    const ModalRating = document.querySelector(".c-rating-circle__front").style=`stroke-dasharray: ${(464 / 10) * rating};`;
+    modelRating ? modelRating.innerHTML = rating : null;
+    console.log(ModalRating);
     if(rating >= 8){
-      ratings.fillStyle = "green";
+      ModalRating.style= "stroke: #00ff00";
     }else if(rating >= 5){
-      ratings.fillStyle = "orange";
+      ModalRating.style="stroke: #00ff00";
     }else{
-      ratings.fillStyle = "red";
+      ModalRating.style="stroke: #00ff00";
     }
     
 
     console.log(id);
     console.log(title);
     console.log(overview);
+    console.log(rating);
+    console.log(backdrop);
+
     modalTitle.innerHTML =title;
     modalOverview.innerHTML = overview;
     modelRating.innerHTML = rating;
     ModalBackdrop.src = backdrop;
-    ModelRating.innerHTML = rating;
+    ModalRating.innerHTML =rating;
+
 
     //modalOverview.innerHTML= e.target.parentElement.children[2].innerHTML;
     // let img = e.target.parentElement.children[2].innerHTML;
